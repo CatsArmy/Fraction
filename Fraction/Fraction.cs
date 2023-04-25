@@ -16,6 +16,7 @@ namespace Fraction
             this.numerator = numerator;
             this.denominator = (denominator == 0) ? 1 : denominator;
         }
+         
         public Fraction(Fraction other)
         {
             this.numerator = other.numerator;
@@ -49,20 +50,31 @@ namespace Fraction
         }
         public void Expansion(int expand)
         {
-            this.numerator *= expand;
-            this.denominator *= expand;
+            numerator *= expand;
+            denominator *= expand;
         }
         public void Simplify()
         {
-            int deno = FindMaxDenomunator(this.numerator, this.denominator);
-            this.numerator /= deno;
-            this.denominator /= deno;
-        }
-        public static Fraction Add(Fraction f1, Fraction f2)
-        {
-            return new Fraction(f1.numerator * f2.denominator+ f1.denominator * f2.numerator,
-                f1.denominator * f2.denominator);
+            int deno = FindMaxDenomunator(numerator, denominator);
+            numerator /= deno;
+            denominator /= deno;
         }
 
+        public static Fraction Add(Fraction f1, Fraction f2)
+        {
+            return new Fraction(f1.numerator * f2.denominator + f1.denominator * f2.numerator, f1.denominator * f2.denominator);
+        }
+
+        public static Fraction AddFractions(Fraction f1, Fraction f2)
+        {
+            Fraction result = new Fraction(f1);
+            result.Expansion(f2.GetDenominator());
+
+            int n1 = result.GetNumerator() + f1.GetDenominator() * f2.GetNumerator();
+            int n2 = result.GetDenominator();
+
+            return new Fraction(n1, n2);
+        }
+        
     }
 }
