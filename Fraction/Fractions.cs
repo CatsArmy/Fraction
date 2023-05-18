@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fraction
+namespace Fractions
 {
     public class Fraction
     {
@@ -52,11 +52,10 @@ namespace Fraction
             this.numerator *= expand;
             this.denominator *= expand;
         }
-        public void Simplify()
+        public Fraction Simplify()
         {
             int deno = FindMaxDenomunator(this.numerator, this.denominator);
-            this.numerator /= deno;
-            this.denominator /= deno;
+            return new Fraction(numerator /= deno, denominator /= deno);
         }
         public static Fraction Add(Fraction f1, Fraction f2)
         {
