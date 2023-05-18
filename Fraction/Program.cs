@@ -17,7 +17,8 @@ for (int i = 0; i < 2; i++)
 }
 Console.WriteLine($"first fraction {fraction[0]}\n");
 Console.WriteLine($"second fraction {fraction[1]}\n");
-Fraction combinedFrac = Fraction.Add(fraction[0], fraction[1]);
+Fraction combinedFrac = Fraction.AddFractions(fraction[0], fraction[1]);
+//Fraction.Add(fraction[0], fraction[1]);
 Console.WriteLine($"combined fraction {combinedFrac}");
 Fraction simpleFrac = combinedFrac.Simplify();
 Console.WriteLine($"combined fraction simplified {simpleFrac}");

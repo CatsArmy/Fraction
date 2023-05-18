@@ -57,10 +57,23 @@ namespace Fractions
             int deno = FindMaxDenomunator(this.numerator, this.denominator);
             return new Fraction(numerator /= deno, denominator /= deno);
         }
+
+        [Obsolete]
         public static Fraction Add(Fraction f1, Fraction f2)
         {
-            return new Fraction(f1.numerator * f2.denominator+ f1.denominator * f2.numerator,
+            Fraction add = new Fraction(f1.numerator * f2.denominator + f1.denominator * f2.numerator,
                 f1.denominator * f2.denominator);
+            return add;
+        }
+        public static Fraction AddFractions(Fraction f1, Fraction f2)
+        {
+            Fraction result = new Fraction(f1);
+            result.Expansion(f2.GetDenominator());
+
+            int n1 = result.GetNumerator() + f1.GetDenominator() * f2.GetNumerator();
+            int n2 = result.GetDenominator();
+
+            return new Fraction(n1, n2);
         }
 
     }
