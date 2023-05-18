@@ -16,6 +16,7 @@ namespace Fractions
             this.numerator = numerator;
             this.denominator = (denominator == 0) ? 1 : denominator;
         }
+         
         public Fraction(Fraction other)
         {
             this.numerator = other.numerator;
@@ -49,8 +50,8 @@ namespace Fractions
         }
         public void Expansion(int expand)
         {
-            this.numerator *= expand;
-            this.denominator *= expand;
+            numerator *= expand;
+            denominator *= expand;
         }
         public Fraction Simplify()
         {
@@ -75,6 +76,6 @@ namespace Fractions
 
             return new Fraction(n1, n2);
         }
-
+        
     }
 }
